@@ -9,6 +9,53 @@
     <style>
         .gallery-item:hover .overlay { opacity: 1; }
         html { scroll-behavior: smooth; }
+
+        /* Feature Animation */
+        @keyframes featurePulse {
+            0%, 100% { opacity: 0.2; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .feature-animated {
+            animation: featurePulse 4s ease-in-out infinite;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding: 20px 0;
+        }
+        .carousel-track {
+            display: flex;
+            width: calc(250px * 16); /* 8 images * 2 for loop */
+            animation: scroll 40s linear infinite;
+        }
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+        .carousel-item {
+            width: 250px;
+            height: 200px;
+            padding: 0 10px;
+            transition: transform 0.3s ease, z-index 0.3s ease;
+            cursor: pointer;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-item:hover {
+            transform: scale(1.3);
+            z-index: 10;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 8)); }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -38,69 +85,54 @@
     </div>
 
     <!-- Property Details -->
-    <section id="caracteristicas" class="py-20 px-4 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-                <h2 class="text-3xl font-bold mb-8 text-gray-900 border-b-4 border-blue-500 inline-block pb-2">Características</h2>
-                <div class="space-y-4 text-lg text-gray-600 leading-relaxed mb-10">
-                    <p>Edificio de categoría. Monoambiente moderno, luminoso y a estrenar, ubicado al frente, en una excelente zona cercana al Hospital Italiano. Confortable y funcional. Cuenta con amenities. A tan solo tres cuadras del Parque Centenario y a pocas cuadras de la estación Angel Gallardo de la línea B de Subte.</p>
-                    <p>Con puertas amplias que facilitan la accesibilidad. Cocina equipada, disposición al frente y amplio balcón que aporta gran luminosidad.</p>
-                    <p>Los huéspedes puede utilizar los espacios comunes, como el amplio hall de entrada con confortables sillones, espacio de gimnasio con moderno equipamiento, piscina con vestuarios y espacio de laundry.</p>
-                    <p>Cuenta con un equipo de aire acondicionado frío/calor, manta adicional, elementos para infusiones, servicio de cable y Wifi, doble cortina que permite la oscuridad total para garantizar un descanso placentero.</p>
-                </div>
+    <section id="caracteristicas" class="py-20 px-4 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-gray-900 border-b-4 border-blue-500 inline-block pb-2">Características</h2>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-bed text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Dormitorio: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-swimming-pool text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Pileta: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-bath text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Baño: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-car text-red-400 text-xl mr-3"></i>
-                        <span class="text-gray-700">Cochera: <b class="text-gray-900">No</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-dumbbell text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Gimnasio: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-couch text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Living: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-door-open text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Balcón: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-tshirt text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Laundry: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-temperature-high text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Calefacción: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-wifi text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Wifi: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100">
-                        <i class="fas fa-snowflake text-blue-500 text-xl mr-3"></i>
-                        <span class="text-gray-700">Aire Acond: <b class="text-gray-900">Sí</b></span>
-                    </div>
-                </div>
+        <div class="space-y-12">
+            <!-- Block 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <p class="text-lg text-gray-600 leading-relaxed">Edificio de categoría. Monoambiente moderno, luminoso y a estrenar, ubicado al frente, en una excelente zona cercana al Hospital Italiano. Confortable y funcional. Cuenta con amenities. A tan solo tres cuadras del Parque Centenario y a pocas cuadras de la estación Angel Gallardo de la línea B de Subte.</p>
+                <img src="fotos/Captura de pantalla 2026-04-22 a la(s) 00.14.45.png" class="rounded-lg shadow-md w-full h-64 object-cover" alt="Vista 1">
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <img src="fotos/Captura de pantalla 2026-04-22 a la(s) 00.14.45.png" class="rounded-lg shadow-md w-full h-48 object-cover" alt="Interior 1">
-                <img src="fotos/IMG_6368 2.JPG" class="rounded-lg shadow-md w-full h-48 object-cover" alt="Interior 2">
-                <img src="fotos/IMG_6700.JPG" class="rounded-lg shadow-md w-full h-48 object-cover" alt="Interior 3">
-                <img src="fotos/IMG_6376 2.JPG" class="rounded-lg shadow-md w-full h-48 object-cover" alt="Interior 4">
+
+            <!-- Block 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <img src="fotos/IMG_6368 2.JPG" class="rounded-lg shadow-md w-full h-64 object-cover" alt="Vista 2">
+                <p class="text-lg text-gray-600 leading-relaxed">Con puertas amplias que facilitan la accesibilidad. Cocina equipada, disposición al frente y amplio balcón que aporta gran luminosidad.</p>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <p class="text-lg text-gray-600 leading-relaxed">Los huéspedes puede utilizar los espacios comunes, como el amplio hall de entrada con confortables sillones, espacio de gimnasio con moderno equipamiento, piscina con vestuarios y espacio de laundry.</p>
+                <img src="fotos/IMG_6700.JPG" class="rounded-lg shadow-md w-full h-64 object-cover" alt="Vista 3">
+            </div>
+
+            <!-- Block 4 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <img src="fotos/IMG_6376 2.JPG" class="rounded-lg shadow-md w-full h-64 object-cover" alt="Vista 4">
+                <p class="text-lg text-gray-600 leading-relaxed">Cuenta con un equipo de aire acondicionado frío/calor, manta adicional, elementos para infusiones, servicio de cable y Wifi, doble cortina que permite la oscuridad total para garantizar un descanso placentero.</p>
+            </div>
+        </div>
+
+        <!-- Features Icons -->
+        <div class="mt-16 grid grid-cols-3 sm:grid-cols-6 gap-4">
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 0s">
+                <i class="fas fa-swimming-pool text-blue-500 text-2xl"></i>
+            </div>
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 0.5s">
+                <i class="fas fa-dumbbell text-blue-500 text-2xl"></i>
+            </div>
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 1s">
+                <i class="fas fa-tshirt text-blue-500 text-2xl"></i>
+            </div>
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 1.5s">
+                <i class="fas fa-temperature-high text-blue-500 text-2xl"></i>
+            </div>
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 2s">
+                <i class="fas fa-wifi text-blue-500 text-2xl"></i>
+            </div>
+            <div class="feature-animated flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100" style="animation-delay: 2.5s">
+                <i class="fas fa-snowflake text-blue-500 text-2xl"></i>
             </div>
         </div>
     </section>
@@ -109,30 +141,25 @@
     <section class="py-20 bg-gray-100 px-4">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-12 text-gray-900">Galería de Imágenes</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/Captura de pantalla 2026-04-22 a la(s) 00.14.45.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/83F486F3-2EA0-4310-9C96-93DAD19B3E56.PNG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6682.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6684.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6383 2.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6386.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6368 2.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg group h-64">
-                    <img src="fotos/IMG_6687.JPG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><img src="fotos/Captura de pantalla 2026-04-22 a la(s) 00.14.45.png" alt="Imagen 1"></div>
+                    <div class="carousel-item"><img src="fotos/83F486F3-2EA0-4310-9C96-93DAD19B3E56.PNG" alt="Imagen 2"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6682.JPG" alt="Imagen 3"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6684.JPG" alt="Imagen 4"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6383 2.JPG" alt="Imagen 5"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6386.JPG" alt="Imagen 6"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6368 2.JPG" alt="Imagen 7"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6687.JPG" alt="Imagen 8"></div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="carousel-item"><img src="fotos/Captura de pantalla 2026-04-22 a la(s) 00.14.45.png" alt="Imagen 1"></div>
+                    <div class="carousel-item"><img src="fotos/83F486F3-2EA0-4310-9C96-93DAD19B3E56.PNG" alt="Imagen 2"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6682.JPG" alt="Imagen 3"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6684.JPG" alt="Imagen 4"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6383 2.JPG" alt="Imagen 5"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6386.JPG" alt="Imagen 6"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6368 2.JPG" alt="Imagen 7"></div>
+                    <div class="carousel-item"><img src="fotos/IMG_6687.JPG" alt="Imagen 8"></div>
                 </div>
             </div>
             <button id="openGallery" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
@@ -143,7 +170,7 @@
 
     <!-- Places of Interest -->
     <section class="py-20 px-4 max-w-6xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-12 text-gray-900 border-b-4 border-blue-500 inline-block pb-2">Lugares de interés</h2>
+        <h2 class="text-3 la font-bold mb-12 text-gray-900 border-b-4 border-blue-500 inline-block pb-2">Lugares de interés</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <a href="https://www.google.com/maps/place/Hospital+Italiano+de+Buenos+Aires/@-34.6062243,-58.4282148,17z/data=!3m2!4b1!5s0x95bcca668a65f773:0xe2a0aef140df3139!4m6!3m5!1s0x95bcca6665a52ca5:0xa08481f63a95b599!8m2!3d-34.6062243!4d-58.4256399!16zL20vMGRyNjdj?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 border border-gray-100 group">
                 <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -164,6 +191,13 @@
                     <i class="fas fa-landmark text-2xl"></i>
                 </div>
                 <span class="font-bold text-gray-800 text-lg">Casa Otamendi</span>
+                <span class="text-blue-500 text-sm mt-2">Ver en Mapa <i class="fas fa-external-link-alt ml-1"></i></span>
+            </a>
+            <a href="https://www.google.com/maps/place/Parque+Centenario/@-34.6061257,-58.4379137,16z/data=!4m14!1m7!3m6!1s0x95bcca688994eb61:0xd055df0a7dafa86e!2sParque+Centenario!8m2!3d-34.6061257!4d-58.4353388!16s%2Fm%2F05msx0w!3m5!1s0x95bcca688994eb61:0xd055df0a7dafa86e!8m2!3d-34.6061257!4d-58.4353388!16s%2Fm%2F05msx0w?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 border border-gray-100 group">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-tree text-2xl"></i>
+                </div>
+                <span class="font-bold text-gray-800 text-lg">Parque Centenario</span>
                 <span class="text-blue-500 text-sm mt-2">Ver en Mapa <i class="fas fa-external-link-alt ml-1"></i></span>
             </a>
         </div>
