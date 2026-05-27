@@ -443,8 +443,9 @@
         // Initialize Pannellum 360 Viewer with Multi-Scene
         pannellum.viewer('panorama', {
             "default": {
+                "type": "equirectangular",
                 "firstScene": "sala_principal",
-                " author": "Walter Potosí",
+                "author": "Walter Potosí",
                 "autoLoad": true
             },
 
@@ -466,7 +467,7 @@
 
                 "segundo_espacio": {
                     "title": "Segundo Espacio",
-                    "panorama": "fotos/sala 1.jpg",
+                    "panorama": "fotos/sala%201.jpg",
                     "autoRotate": -2,
                     "hotSpots": [
                         {
@@ -497,7 +498,6 @@
         document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
         });
-    </script>
     </script>
 </body>
 </html>
