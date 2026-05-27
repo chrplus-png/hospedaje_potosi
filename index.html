@@ -440,13 +440,45 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Initialize Pannellum 360 Viewer
+        // Initialize Pannellum 360 Viewer with Multi-Scene
         pannellum.viewer('panorama', {
-            "type": "equirectangular",
-            "panorama": "fotos/ejemplos-de-vídeos-360.jpg",
-            "autoLoad": true,
-            "autoRotate": -2,
-            "compass": true
+            "default": {
+                "firstScene": "sala_principal",
+                " author": "Walter Potosí",
+                "autoLoad": true
+            },
+
+            "scenes": {
+                "sala_principal": {
+                    "title": "Sala Principal",
+                    "panorama": "fotos/ejemplos-de-vídeos-360.jpg",
+                    "autoRotate": -2,
+                    "hotSpots": [
+                        {
+                            "pitch": 0,
+                            "yaw": 0,
+                            "type": "scene",
+                            "target": "segundo_espacio",
+                            "text": "Entrar al siguiente espacio"
+                        }
+                    ]
+                },
+
+                "segundo_espacio": {
+                    "title": "Segundo Espacio",
+                    "panorama": "fotos/334.1-KB_.jpg",
+                    "autoRotate": -2,
+                    "hotSpots": [
+                        {
+                            "pitch": 0,
+                            "yaw": 0,
+                            "type": "scene",
+                            "target": "sala_principal",
+                            "text": "Volver a la Sala Principal"
+                        }
+                    ]
+                }
+            }
         });
 
         // Reveal Animation Logic
